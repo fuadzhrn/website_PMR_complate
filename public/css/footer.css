@@ -1,0 +1,164 @@
+/* Global Footer Styles */
+
+.site-footer {
+    position: relative;
+    font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+    background: radial-gradient(circle at top left, #3b241f 0%, #2b201b 55%, #1d1410 100%);
+    color: #f7f2ec;
+    margin-top: 0;
+    padding: 10px 24px 16px;
+    border-top: none;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2.1fr 1.1fr 1.6fr;
+    column-gap: 72px;
+    row-gap: 0;
+    font-size: 12px;
+    align-items: flex-start;
+}
+
+.footer-brand h3 {
+    font-size: 18px;
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.footer-brand p {
+    margin-bottom: 2px;
+    line-height: 1.6;
+    max-width: 260px;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0 0; /* dekatkan ikon ke garis putih bawah (tanpa jarak bawah) */
+}
+
+.social-icon {
+    width: 34px;   /* perbesar lingkaran ikon */
+    height: 34px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.social-icon svg {
+    width: 18px;   /* perbesar simbol di dalamnya */
+    height: 18px;
+    fill: #ffffff;
+}
+
+.social-icon:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+.footer-copy {
+    font-size: 10px;
+    color: #c7b9ac;
+    line-height: 1.5;
+    grid-column: 1 / span 2;
+    margin-top: 0;
+}
+
+.footer-divider {
+    height: 1px;
+    width: 100%;
+    max-width: 1040px;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    grid-column: 1 / span 2;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 80px; /* jarak kiri-kanan antar kolom link */
+    row-gap: 10px;   /* jarak atas-bawah antar link */
+    margin-top: 22 px; /* sedikit turun dari judul utama */
+    align-self: center;
+    justify-self: center; /* posisi grup link di tengah kolom */
+    padding: 0 24px; /* ruang kiri-kanan agar lebih simetris */
+}
+
+.footer-links a {
+    color: #f7f2ec;
+    text-decoration: underline;
+    font-size: 12px;
+    white-space: nowrap; /* cegah teks 2 baris seperti Program Kegiatan */
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration-thickness: 1.2px;
+}
+
+.footer-contact {
+    margin-top: 24px; /* turunkan blok kontak lebih jauh dari judul */
+}
+
+.footer-contact p {
+    margin-bottom: 4px;
+}
+
+.footer-contact-row {
+    white-space: nowrap;
+}
+
+.footer-contact a {
+    color: #f7f2ec;
+    text-decoration: none;
+    white-space: nowrap; /* jaga link tetap satu baris */
+}
+
+.footer-contact a:hover {
+    text-decoration: underline;
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    margin-right: 6px;
+}
+
+.contact-icon svg {
+    width: 12px;
+    height: 12px;
+    fill: #f7f2ec;
+}
+
+@media (max-width: 992px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}

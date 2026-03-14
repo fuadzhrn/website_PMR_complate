@@ -1,0 +1,966 @@
+/* ========================================
+   Berita Page - Layout & Styles
+   ======================================== */
+
+:root {
+    --page-bg: #F5EFE6;
+    --primary-brown: #3b241f;
+    --primary-dark: #462E29;
+    --text-main: #f7f2ec;
+    --text-muted: #e2d7cf;
+    --card-text: #241c18;
+    --border-soft: #d2c3b5;
+    --footer-bg: #2b201b;
+    --footer-text: #f7f2ec;
+
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-poppins: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-montserrat);
+    background-color: var(--page-bg);
+}
+
+/* ========================================
+   Top Navigation Bar
+   ======================================== */
+
+.news-header {
+    position: sticky;
+    top: 0;
+    z-index: 120;
+    background-color: var(--primary-brown);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+}
+
+.nav-btn {
+    background-color: rgba(70, 46, 41, 0.85);
+    border: none;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.nav-btn:hover {
+    background-color: rgba(70, 46, 41, 1);
+    transform: translateY(-1px);
+}
+
+.nav-btn svg { color: #fff; }
+
+.nav-burger {
+    width: 60px;
+    height: 42px;
+    border-radius: 10px 16px 16px 10px;
+}
+
+.nav-search {
+    width: 60px;
+    height: 42px;
+    border-radius: 16px 10px 10px 16px;
+}
+
+.nav-logo-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(70, 46, 41, 0.8);
+    padding: 8px 20px;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.logo-pill {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* ========================================
+   Hero News
+   ======================================== */
+
+.hero-news {
+    position: relative;
+    min-height: 100vh; /* penuh tinggi layar agar tidak terpotong */
+    overflow: hidden;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.6) 100%);
+}
+
+/* Efek fade sederhana saat slide berganti */
+.hero-news.hero-fade .hero-image img,
+.hero-news.hero-fade .hero-title,
+.hero-news.hero-fade .hero-description {
+    opacity: 0;
+    transition: opacity 0.25s ease-out;
+}
+
+.hero-news .hero-image img,
+.hero-news .hero-title,
+.hero-news .hero-description {
+    transition: opacity 0.25s ease-in;
+}
+
+/* Hero text di berita dibuat mirip dengan hero home (tanpa card) */
+.hero-text {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 40px 48px;
+    color: var(--text-main);
+}
+
+.hero-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-right: 32px;
+}
+
+.bullet {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #ffffff;              /* sama seperti indikator di home */
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.bullet.active {
+    background-color: var(--primary-dark);  /* coklat gelap seperti di home */
+}
+
+.hero-title {
+    font-family: var(--font-montserrat);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: #ffffff;
+}
+
+.hero-description {
+    max-width: 520px;
+    font-family: var(--font-montserrat);
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 30px; /* beri jarak lebih lega dari tombol */
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
+    transform: translateX(-50%);
+    z-index: 6;
+}
+
+.hero-btn {
+    min-width: 140px;
+    padding: 9px 26px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(0, 0, 0, 0.14) 55%,
+        rgba(0, 0, 0, 0.22) 100%);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.hero-btn-filled {
+    background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.14) 0%,
+        rgba(0, 0, 0, 0.16) 55%,
+        rgba(0, 0, 0, 0.26) 100%);
+}
+
+.hero-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 255, 255, 1);
+}
+
+/* ========================================
+   Daily News Section
+   ======================================== */
+
+.news-main {
+    max-width: 1200px; /* sedikit lebih lebar agar konten terasa besar */
+    margin: 0 auto 72px;
+    padding: 32px 16px 0;
+}
+
+/* ─────────────────────────────────────────────────
+   Daily News: full-width #D9D9D9 background
+   ───────────────────────────────────────────────── */
+.daily-news {
+    background-color: #D9D9D9;
+    padding: 0 0 40px;
+    width: 100%;
+}
+
+.daily-news-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.daily-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding: 24px 0 0;
+    background-color: transparent;
+    border-radius: 0;
+}
+
+.daily-tag {
+    background-color: #ff4030;
+    color: #fff;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: var(--font-poppins);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.daily-arrow {
+    font-size: 18px;
+    color: #444;
+}
+
+.daily-title {
+    font-size: 18px;
+    font-family: var(--font-poppins);
+    font-weight: 600;
+    color: #444;
+}
+
+.daily-grid {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 10px;
+}
+
+.daily-left,
+.daily-right {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.daily-card-horizontal {
+    display: grid;
+    grid-template-columns: 0.9fr 1.4fr;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.news-link:hover .daily-card-horizontal {
+    box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+    transform: translateY(-2px);
+}
+
+.news-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.daily-card-horizontal .card-thumb img {
+    width: 100%;
+    height: 190px; /* gambar lebih tinggi seperti contoh */
+    object-fit: cover;
+}
+
+.daily-card-horizontal .card-content {
+    padding: 10px 14px 18px;
+    font-size: 12px;
+    color: var(--card-text);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.card-text {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.card-meta {
+    font-size: 11px;
+    color: #9b8f86;
+    margin-top: auto;
+    text-align: right;
+}
+
+/* Posisi tanggal seperti "Hari ini" menempel di sudut kanan bawah card harian */
+.daily-card-horizontal .card-content {
+    position: relative;
+}
+
+.daily-card-horizontal .card-meta {
+    position: absolute;
+    right: 10px;
+    bottom: 6px;
+    margin-top: 0;
+}
+
+.card-title-underline {
+    display: inline-block;
+    border-bottom: 2px solid #ff5a4a;
+    padding-bottom: 2px;
+    margin-bottom: 6px;
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.daily-card.is-hidden {
+    display: none;
+}
+
+.daily-more-wrapper {
+    margin-top: 6px;
+    text-align: center;
+}
+
+.daily-more-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-family: var(--font-montserrat);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.daily-more-btn .arrow {
+    margin-left: 6px;
+    font-size: 11px;
+}
+
+.daily-more-btn.expanded .arrow {
+    transform: rotate(180deg);
+}
+
+.daily-more-panel {
+    margin-top: 10px;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 12px 0 0;
+    box-shadow: none;
+}
+
+.daily-more-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.daily-more-scroll {
+    max-height: 520px; /* cukup untuk banyak card, lalu scroll */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.daily-more-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 6px 8px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-size: 12px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+}
+
+.daily-more-link {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex: 1;
+    gap: 8px;
+}
+
+.daily-more-link:hover {
+    text-decoration: underline;
+}
+
+.daily-more-item-title {
+    font-weight: 500;
+}
+
+.daily-more-thumb {
+    width: 70px;
+    height: 50px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.daily-more-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.daily-more-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.daily-more-item-desc {
+    font-size: 11px;
+    color: #666;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.daily-more-item-meta {
+    font-size: 11px;
+    color: #9b8f86;
+}
+
+.daily-more-footer {
+    margin-top: 10px;
+    text-align: center;
+    padding-top: 8px;
+    border-top: 1px solid #d0cbc7;
+}
+
+.daily-more-all-btn {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #7a3b2e;
+    text-decoration: none;
+    padding: 6px 16px;
+    border: 1.5px solid #7a3b2e;
+    border-radius: 20px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.daily-more-all-btn:hover {
+    background-color: #7a3b2e;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* ========================================
+   Recruitment Section
+   ======================================== */
+
+.recruitment-section {
+    position: relative;
+    margin-top: 0;
+    border-radius: 0;
+    overflow: hidden;
+    min-height: 100vh; /* penuh tinggi layar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.recruitment-bg {
+    position: absolute;
+    inset: 0;
+}
+
+.recruitment-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.recruitment-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+        rgba(70, 46, 41, 0.78) 0%,
+        rgba(70, 46, 41, 0.78) 40%,
+        rgba(70, 46, 41, 0.85) 100%); /* efek coklat pudar */
+}
+
+.recruitment-content {
+    position: relative;
+    z-index: 3;
+    padding: 38px 40px 60px;
+    text-align: center;
+    color: #fff;
+}
+
+.recruitment-title {
+    font-family: var(--font-poppins);
+    font-size: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.recruitment-text {
+    font-size: 12px;
+    line-height: 1.8;
+    max-width: 640px;
+    margin: 0 auto 10px;
+}
+
+.recruitment-text.small {
+    font-size: 11px;
+}
+
+.recruitment-actions {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.recruit-btn {
+    min-width: 110px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.recruit-online { background-color: #ffffff22; }
+.recruit-offline { background-color: transparent; }
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.site-footer {
+    background: radial-gradient(circle at top left, #3b241f 0%, var(--footer-bg) 55%, #1d1410 100%);
+    color: var(--footer-text);
+    padding: 40px 32px 24px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Pada halaman dengan section recruitment penuh layar,
+   hilangkan jarak putih di atas footer */
+.recruitment-section + .site-footer {
+    margin-top: 0;
+}
+
+.footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2.1fr 1.1fr 1.6fr;
+    gap: 40px;
+    font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+    font-size: 12px;
+}
+
+.footer-brand h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.footer-brand p { margin-bottom: 8px; }
+
+.footer-social {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0 16px;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.footer-copy {
+    font-size: 10px;
+    color: #c7b9ac;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-links a {
+    color: var(--footer-text);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-contact p { margin-bottom: 6px; }
+
+.footer-contact {
+    margin-top: 24px;
+}
+
+.footer-contact-row {
+    white-space: nowrap;
+}
+
+.footer-contact a {
+    color: var(--footer-text);
+    text-decoration: none;
+}
+
+.footer-contact a:hover { text-decoration: underline; }
+
+/* ========================================
+   Responsive
+   ======================================== */
+
+@media (max-width: 992px) {
+    .daily-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .daily-right {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .footer-inner {
+        grid-template-columns: 1.5fr 1fr 1.5fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .news-header {
+        padding: 10px 16px;
+    }
+
+    .nav-logo-container {
+        gap: 12px;
+        padding: 6px 14px;
+    }
+
+    .logo-pill {
+        width: 40px;
+        height: 40px;
+    }
+
+    .hero-content {
+        padding: 32px 20px;
+    }
+
+    .news-main {
+        margin-bottom: 56px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 18px;
+    }
+
+    .daily-right {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 16px 80px;
+    }
+
+    .hero-bullets {
+        flex-direction: row;
+        margin-right: 0;
+        margin-bottom: 12px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+        bottom: 24px;
+    }
+
+    .daily-header,
+    .daily-grid {
+        padding: 8px 10px;
+    }
+}
+
+/* ============================================
+   Search Results Page
+   ============================================ */
+.news-main.search-mode {
+    background: #f5f5f5;
+    min-height: 60vh;
+}
+
+.search-results-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+}
+
+.search-results-header {
+    margin-bottom: 32px;
+}
+
+.search-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #6b5b52;
+    text-decoration: none;
+    margin-bottom: 16px;
+    transition: color .2s;
+}
+
+.search-back-link:hover {
+    color: #c0392b;
+}
+
+.search-results-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c1a14;
+    margin-bottom: 4px;
+}
+
+.search-results-title em {
+    color: #c0392b;
+    font-style: normal;
+}
+
+.search-results-count {
+    font-size: 13px;
+    color: #8c7b72;
+    margin: 0;
+}
+
+/* Grid hasil */
+.search-results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.search-result-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    height: 280px;
+}
+
+.search-result-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.07);
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.search-result-link:hover .search-result-card {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+.search-result-thumb {
+    flex-shrink: 0;
+}
+
+.search-result-thumb img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.search-result-body {
+    padding: 12px 14px;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.search-result-title {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #2c1a14;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+.search-result-text {
+    font-size: 12.5px;
+    color: #7a6b62;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+.search-result-date {
+    font-size: 11px;
+    color: #b09a8e;
+    margin-top: auto;
+}
+
+/* Kosong */
+.search-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    gap: 12px;
+    color: #6b5b52;
+    text-align: center;
+}
+
+.search-empty p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.search-empty-hint {
+    font-size: 13px;
+    color: #9c8b82;
+}
+
+@media (max-width: 600px) {
+    .search-results-grid {
+        grid-template-columns: 1fr;
+    }
+}

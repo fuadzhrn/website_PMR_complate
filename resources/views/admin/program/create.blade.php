@@ -1,0 +1,22 @@
+@extends('admin.layouts.app')
+@section('title', 'Tambah Program Kegiatan')
+
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <a href="{{ route('admin.program.index') }}" class="btn btn-sm btn-outline-secondary mb-3"><i class="bi bi-arrow-left"></i> Kembali</a>
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ route('admin.program.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @include('admin.program._form')
+                    <div class="d-flex gap-2 mt-3">
+                        <button type="submit" class="btn btn-success">Simpan Program</button>
+                        <a href="{{ route('admin.program.index') }}" class="btn btn-outline-secondary">Batal</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection

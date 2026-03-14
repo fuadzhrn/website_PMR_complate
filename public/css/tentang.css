@@ -1,0 +1,277 @@
+/* ========================================
+   Tentang Kami - Struktur Organisasi Slide
+   ======================================== */
+
+:root {
+    --page-bg-dark: #3b241f;
+    --box-bg: #F5EFE6;
+    --text-main: #f9f0ea;
+    --footer-bg: #2b201b;
+    --footer-text: #f7f2ec;
+    --font-montserrat: 'Montserrat', sans-serif;
+    --font-poppins: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-montserrat);
+    background-color: var(--page-bg-dark);
+    color: var(--text-main);
+}
+
+.tentang-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--page-bg-dark);
+}
+
+.tentang-burger-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 1100;
+    width: 60px;
+    height: 42px;
+    border-radius: 16px;
+    border: none;
+    background-color: rgba(70, 46, 41, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+}
+
+.tentang-burger-btn svg {
+    color: #ffffff;
+}
+
+.tentang-burger-btn:hover {
+    background-color: rgba(70, 46, 41, 0.95);
+}
+
+/* Hide burger when sidebar is open (same behavior as other menus) */
+
+.sidebar-open .tentang-burger-btn {
+    display: none;
+}
+
+.tentang-main {
+    flex: 1;
+    max-width: 1120px;
+    margin: 40px auto 32px;
+    padding: 0 24px;
+}
+
+.tentang-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.tentang-title {
+    font-family: var(--font-poppins);
+    font-size: 32px;
+    color: var(--text-main);
+}
+
+.tentang-underline {
+    display: block;
+    width: 160px;
+    height: 2px;
+    margin: 10px auto 40px;
+    background-color: var(--text-main);
+}
+
+.tentang-logo-group {
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    display: flex;
+    gap: 28px;
+}
+
+.tentang-logo-pill {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tentang-logo-pill img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Organigram */
+
+.org-structure {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.org-row {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+}
+
+.org-box {
+    width: 180px;
+    height: 70px;
+    background-color: var(--box-bg);
+    border-radius: 4px;
+}
+
+/* Footer (enhanced aesthetic brown style) */
+
+.site-footer {
+    background: radial-gradient(circle at top left, #3b241f 0%, var(--footer-bg) 55%, #1d1410 100%);
+    color: var(--footer-text);
+    padding: 40px 32px 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2.1fr 1.1fr 1.6fr;
+    gap: 40px;
+    font-size: 12px;
+}
+
+.footer-column h3 {
+    font-family: var(--font-montserrat, 'Montserrat', sans-serif);
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    margin-bottom: 8px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0 16px;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background-color: rgba(255, 255, 255, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.footer-copy {
+    font-size: 11px;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.footer-links a {
+    color: #f5e7d8;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.footer-contact p {
+    margin-bottom: 6px;
+}
+
+.footer-contact {
+    margin-top: 24px;
+}
+
+.footer-contact-row {
+    white-space: nowrap;
+}
+
+.footer-contact a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Responsive */
+
+@media (max-width: 992px) {
+    .org-row {
+        gap: 40px;
+    }
+
+    .tentang-logo-group {
+        right: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .org-row-bottom {
+        flex-wrap: wrap;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .tentang-logo-group {
+        position: static;
+        justify-content: center;
+        margin-top: 24px;
+    }
+}
+
+@media (max-width: 576px) {
+    .tentang-main {
+        margin: 24px auto 24px;
+        padding: 0 16px;
+    }
+
+    .tentang-header {
+        margin-bottom: 40px;
+    }
+
+    .tentang-title {
+        font-size: 24px;
+    }
+
+    .org-row {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .org-box {
+        width: 100%;
+        max-width: 260px;
+    }
+}
